@@ -1,0 +1,88 @@
+<%-include("partials/header.ejs") %>
+<div class="daily-view">
+    <div class="slideshow-container">
+        <% for(let i=0;i<DateInThisWeek.length;i++){ %>
+            <div class="mySlides">
+
+                <div class="daily-container">
+                    <h3 class="daily-title home-subtitle"><%= DateInThisWeek[i] %></h3>
+                    <div class="daily-content">
+                        <% for(let item of ThisWeekToDo[i]){ %>
+                            <div class="item">
+                                <form action="/delete" method="post">
+                                    <input class="delete" type="checkbox" onchange="this.form.submit()" name="deleteItemId" value="<%= item.id %>">
+                                </form>
+                                <p id="ToDoItem<%=item.id%>">
+                                    <%= item.to_do %>
+                                </p>
+                                <!-- Edit Button -->
+                                <button class="bttn" id="editbttn<%= item.id %>" onclick="editItem(<%= item.id %>)">Edit</button>
+
+                                <!-- Hidden Edit Form -->
+                                <form id="editForm<%= item.id %>" action="/edit" method="post" style="display:none;">
+                                    <input type="text" name="to_do" value="<%= item.to_do %>" />
+                                    <input type="hidden" name="id" value="<%= item.id %>" />
+                                    <button class="bttn" type="submit">Save</button>
+                                </form>
+                            </div>
+                        <% } %>
+                        <form class="item" action="/add" method="post">
+                            <input type="text" name="to_do" placeholder="New to do" autocomplete="off" autofocus="true" />
+                            <button class="add" type="submit" name="Date" value=<%=DateInThisWeek[i] %> >+</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>  
+    </div>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+    </div>
+</div>
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    }
+
+    function editItem(itemId) {
+        // Hide the to-do text
+        document.getElementById('ToDoItem' + itemId).style.display = 'none';
+        
+        document.getElementById('editbttn' + itemId).style.display = 'none';
+        // Show the edit form
+        document.getElementById('editForm' + itemId).style.display = 'block';
+    }
+</script>

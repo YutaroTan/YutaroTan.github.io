@@ -1,0 +1,292 @@
+.agenda {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333; /* Light background color */
+    border-radius: 50px; /* Rounded corners */
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+.agenda:hover {
+    background-color: white; /* Dark background on hover */
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow */
+}
+
+.header {
+    background-color: #333;
+    position: fixed; /* Use 'fixed' for a sticky header */
+    top: 0; /* Stick to the top */
+    left: 0; /* Ensure it spans from the left */
+    width: 100%; /* Make sure it covers the full width */
+    z-index: 1000; /* Ensure it appears above other content */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+}
+
+.header-content{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a.bookmark {
+    display: inline-block; /* Makes the anchor behave like a block */
+    width: 40px; /* Set the desired width */
+    height: 40px; /* Set the desired height */
+    background-color: #333; /* Optional: background color */
+    color: #fff; /* Icon color */
+    font-size: 24px; /* Size of the icon */
+    line-height: 40px; /* Centers the icon vertically */
+    text-align: center; /* Centers the icon horizontally */
+    border-radius: 50%; /* Make it circular */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+    margin: 7px;
+}
+
+a.bookmark:hover {
+    background-color: #555; /* Change background on hover */
+}
+
+/* above is header section */
+
+.home-page {
+    margin-top: 80px;  /* Adjust this based on the height of your header */
+    padding: 20px;
+    font-family:'Times New Roman', Times, serif;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .home-title {
+    font-size: 3rem;
+    color: #333;
+    width: 50%;
+    text-align: center;
+  }
+  
+  .home-subtitle {
+    font-size: 1.5rem;
+    color: #555;
+  }
+
+  .home-subtitle {
+    background-color: #333;  /* purple background */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  /* To-do items container */
+  .home-display {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;  /* Space between to-do items */
+    border: 1.5px solid #333;  /* Border around the entire today section */
+    border-radius: 0 0 8px 8px;  /* Rounded corners for aesthetics */
+    padding: 10px;
+  }
+  .today-title{
+    width: 30%;
+  }
+
+  .item {
+    padding: 10px;
+    border-bottom: 1px solid #333;  /* Separator line for each item */
+  }
+
+.home{
+    background-color: #fff;
+    color:black;
+    border-radius: 8px;
+    border: 1px solid #333;
+    margin: 0;
+    width: 30%;
+    text-align: center;
+}
+
+.home-buttom{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.home:hover {
+    background-color: #333; /* Dark background on hover */
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow */
+}
+/* above is index.ejs css */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  user-select: none;
+  border: 1px solid #333;
+}
+
+.prev{
+  border-radius: 3px 0 0 3px;
+}
+
+.slideshow-container {
+  width: 50%;
+  position: relative;
+  margin: auto;
+  min-height: 30%;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+/* Number text (1/3 etc) */
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.daily-view{
+  margin-top: 80px;  /* Adjust this based on the height of your header */
+  padding: 20px;
+  font-family:'Times New Roman', Times, serif;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.daily-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+.daily-content, .daily-title{
+  width:70%;
+}
+
+.daily-content{
+  border: 1.5px solid #333;
+  border-radius: 0 0 8px 8px;
+}
+
+.mySlides{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  width: 100%;
+  height: 100%; /* Ensure it takes the full height of the parent container */
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.delete {
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+input[type="text"]:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.bttn {
+  background-color: white;
+  color: black;
+  border: 1px solid #333;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.bttn:hover {
+  background-color: #333;
+  color: white;
+}
+
+.add {
+  background-color: #D3D3D3;
+  border: 1px solid #333;
+  color: black;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.add:hover {
+  background-color: #333;
+  color: white;
+}
+
+p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+form {
+  margin: 0;
+}
